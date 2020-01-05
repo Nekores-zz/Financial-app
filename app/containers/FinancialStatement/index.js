@@ -12,7 +12,9 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import { useInjectReducer } from 'utils/injectReducer';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
+import cellArray from './cellArray';
+import useStyles from './styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import LabelPanel from '../../components/LabelPanel';
@@ -24,100 +26,6 @@ const getNumber = function(number) {
   return number && number.constructor == Number ? number : 0;
 };
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    margin: '0 auto',
-    width: '950px',
-  },
-
-  main_container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-  },
-
-  title_center: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '50px',
-    fontFamily: 'Roboto',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    fontSize: '14px',
-    lineHeight: '16px',
-    borderBottom: '1px solid #CACACA;',
-  },
-
-  paper_center: {
-    width: '629px',
-    height: '469px',
-    background: '#fff',
-    // margin: '0 auto',
-    textAlign: 'center',
-  },
-
-  center_box: {
-    display: 'flex',
-  },
-
-  left_grid: {
-    display: 'flex',
-    width: '316px',
-    height: '330px',
-    borderRight: '1px solid #CACACA',
-  },
-
-  cell_box_left: {
-    width: '125px',
-    borderRight: '1px solid #CACACA',
-  },
-
-  cell_box_right: {
-    width: '191px',
-    borderRight: '1px solid #CACACA',
-  },
-
-  cell: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '47px',
-    borderBottom: '1px solid #CACACA',
-  },
-
-  input_style: {
-    paddingLeft: '10px',
-    background: '#F1F0F0',
-    border: '1px solid #CACACA',
-    width: '170px',
-    height: '30px',
-  },
-  input_style_calcu: {
-    paddingLeft: '10px',
-    background: '#F1F0F0',
-    border: '1px solid #CACACA',
-    width: '226px',
-    height: '36px',
-  },
-  total_box: {
-    marginRight: '6rem',
-    marginLeft: '1rem',
-  },
-  label: {
-    margin: 0,
-    paddingBottom: '2px',
-    textAlign: 'start',
-  },
-  calcutale_box: {
-    height: '87px',
-    display: 'flex',
-    alignItems: 'center',
-  },
-}));
-
 export function FinancialStatement() {
   useInjectReducer({ key: 'financialStatement', reducer });
   const classes = useStyles();
@@ -125,9 +33,12 @@ export function FinancialStatement() {
     input1: 0,
     input2: 0,
     input3: 0,
+    input4: 0,
+    input5: 0,
+    input6: 0,
+    input7: 0,
   });
   const handleChange = (event, item) => {
-    console.log(event.target.value, item, 'item');
     setState({
       ...state,
       [item]: parseInt(event.target.value),
@@ -142,40 +53,6 @@ export function FinancialStatement() {
     'input6',
     'input7',
   ];
-  const cellArray = [
-    {
-      LabelText: 'Cash',
-      color: '#2ECC71',
-    },
-    {
-      LabelText: 'Fixed Assets',
-      color: '#E67E22',
-    },
-    {
-      LabelText: 'Prepaid Expensis',
-      color: '#E74C3C',
-    },
-    {
-      LabelText: 'Inventory',
-      color: '#7F8C8D',
-    },
-    {
-      color: '#F39C12',
-    },
-    {
-      color: '#2980B9',
-    },
-    {
-      color: '#7F8C8D',
-    },
-    {
-      color: '#FDCB6E',
-    },
-    {
-      color: '#74D57E',
-    },
-  ];
-  console.log(state, 'State');
   const total = 0;
 
   return (

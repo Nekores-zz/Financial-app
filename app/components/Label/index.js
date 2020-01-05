@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'normal',
     fontSize: '12px',
     lineHeight: '14px',
+    textAlign: 'start',
   },
 }));
 
