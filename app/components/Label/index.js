@@ -12,7 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   label_style: {
     padding: '10px',
-    margin: '11px auto',
     width: '114px',
     height: '36px',
     fontFamily: 'Roboto',

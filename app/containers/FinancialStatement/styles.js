@@ -70,6 +70,7 @@ const useStyles = makeStyles(theme => ({
     width: '170px',
     height: '30px',
   },
+
   input_style_calcu: {
     paddingLeft: '10px',
     background: '#F1F0F0',
@@ -77,15 +78,23 @@ const useStyles = makeStyles(theme => ({
     width: '226px',
     height: '36px',
   },
+
   total_box: {
     marginRight: '6rem',
     marginLeft: '1rem',
   },
+
   label: {
     margin: 0,
     paddingBottom: '2px',
     textAlign: 'start',
   },
+
+  card: {
+    margin: '8px',
+    cursor: 'pointer',
+  },
+
   calcutale_box: {
     height: '87px',
     display: 'flex',
