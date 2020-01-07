@@ -11,7 +11,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   label_style: {
-    padding: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: '10px',
     width: '114px',
     height: '36px',
     fontFamily: 'Roboto',
@@ -27,7 +29,7 @@ function Label(props) {
   const classes = useStyles();
   return (
     <div
-      style={{ backgroundColor: props.color }}
+      style={{ backgroundColor: props.bgColor, color: props.color }}
       className={classes.label_style}
     >
       {props.LabelText}

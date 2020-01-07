@@ -1,35 +1,77 @@
 const cellArray = [
   {
     LabelText: 'Cash',
-    color: '#2ECC71',
+    bgColor: '#4caf50',
   },
   {
     LabelText: 'Fixed Assets',
-    color: '#E67E22',
+    bgColor: '#03a9f4',
   },
   {
-    LabelText: 'Prepaid Expensis',
-    color: '#E74C3C',
+    LabelText: 'Pre-Paid Expensis',
+    bgColor: '#ff9800',
   },
   {
     LabelText: 'Inventory',
-    color: '#7F8C8D',
+    bgColor: '#ffeb3b',
   },
   {
-    color: '#F39C12',
+    LabelText: 'Accounts Receivable',
+    bgColor: '#8bc34a',
   },
   {
-    color: '#2980B9',
+    bgColor: '#2980B9',
   },
   {
-    color: '#7F8C8D',
+    bgColor: '#7F8C8D',
   },
   {
-    color: '#FDCB6E',
+    bgColor: '#FDCB6E',
   },
   {
-    color: '#74D57E',
+    bgColor: '#74D57E',
   },
 ];
 
-export default cellArray;
+const cellArrayTwo = [
+  {
+    LabelText: 'Account Payable',
+    bgColor: '#ffc0cb',
+  },
+  {
+    LabelText: 'Accrued Wages',
+    bgColor: '#ffc0cb',
+  },
+  {
+    LabelText: 'Advances from Customers',
+    bgColor: '#ffc0cb',
+  },
+  {
+    LabelText: 'Provision for Warranty',
+    bgColor: '#ffc0cb',
+  },
+  {
+    LabelText: 'Accounts Receivable',
+    bgColor: '#ffc0cb',
+  },
+  {
+    LabelText: 'Notes Payable',
+    bgColor: '#ffc0cb',
+  },
+  {
+    LabelText: 'Shareholder Capital',
+    bgColor: '#000',
+    color: '#fff',
+  },
+  {
+    LabelText: 'Earnings YTD',
+    bgColor: '#000',
+    color: '#fff',
+  },
+  {
+    bgColor: '#000',
+    color: '#fff',
+  },
+];
+
+export { cellArray, cellArrayTwo };

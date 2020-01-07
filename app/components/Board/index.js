@@ -12,18 +12,15 @@ function Board(props) {
   const drop = e => {
     e.preventDefault();
     const card_id = e.dataTransfer.getData('card_id');
-
     const card = document.getElementById(card_id);
     card.style.display = 'block';
-    // if (card.id === 'card-1') {
     e.target.appendChild(card);
-    console.log(card.id, 'target');
-    // } else {
-    // }
   };
+
   const dragOver = e => {
     e.preventDefault();
   };
+
   return (
     <div
       id={props.id}

@@ -22,9 +22,10 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fontSize: '14px',
+    fontSize: '16px',
     lineHeight: '16px',
     borderBottom: '1px solid #CACACA;',
+    margin: 0,
   },
 
   paper_center: {
@@ -42,7 +43,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     width: '316px',
     height: '330px',
-    borderRight: '1px solid #CACACA',
   },
 
   cell_box_left: {
@@ -88,6 +88,7 @@ const useStyles = makeStyles(theme => ({
     margin: 0,
     paddingBottom: '2px',
     textAlign: 'start',
+    fontSize: '14px',
   },
 
   card: {
