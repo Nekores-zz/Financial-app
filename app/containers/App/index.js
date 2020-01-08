@@ -10,6 +10,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
+// import DragableCards from 'containers/DragableCards';
 import FinancialStatement from 'containers/FinancialStatement';
 
 import GlobalStyle from '../../global-styles';
@@ -28,6 +29,7 @@ export default function App() {
     <AppWrapper>
       <Switch>
         <Route exact path="/" component={FinancialStatement} />
+        {/* <Route exact path="/" component={DragableCards} /> */}
         {/* <Route path="/features" component={FeaturePage} />
         <Route path="" component={NotFoundPage} /> */}
       </Switch>

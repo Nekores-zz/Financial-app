@@ -1,4 +1,4 @@
-const cellArray = [
+const cellLeft = [
   {
     LabelText: 'Cash',
     bgColor: '#4caf50',
@@ -19,21 +19,9 @@ const cellArray = [
     LabelText: 'Accounts Receivable',
     bgColor: '#8bc34a',
   },
-  {
-    bgColor: '#2980B9',
-  },
-  {
-    bgColor: '#7F8C8D',
-  },
-  {
-    bgColor: '#FDCB6E',
-  },
-  {
-    bgColor: '#74D57E',
-  },
 ];
 
-const cellArrayTwo = [
+const cellRight = [
   {
     LabelText: 'Account Payable',
     bgColor: '#ffc0cb',
@@ -68,10 +56,6 @@ const cellArrayTwo = [
     bgColor: '#000',
     color: '#fff',
   },
-  {
-    bgColor: '#000',
-    color: '#fff',
-  },
 ];
 
-export { cellArray, cellArrayTwo };
+export { cellLeft, cellRight };

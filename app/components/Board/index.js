@@ -15,6 +15,7 @@ function Board(props) {
     const card = document.getElementById(card_id);
     card.style.display = 'block';
     e.target.appendChild(card);
+    // console.log(e.target.appendChild(card), 'card');
   };
 
   const dragOver = e => {
