@@ -8,12 +8,7 @@ import React from 'react';
 
 function Card(props) {
   const dragStart = e => {
-    const target = e.target;
-
-    e.dataTransfer.setData('card_id', target.id);
-    // setTimeout(() => {
-    //   target.style.display = 'none';
-    // }, 0);
+    e.dataTransfer.setData(`card_id_${props.cardID}`, e.target.id);
   };
 
   const dragOver = e => {

@@ -4,7 +4,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     margin: '0 auto',
-    width: '950px',
+    width: '1600px',
   },
 
   main_container: {
@@ -18,19 +18,19 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '50px',
+    height: '74px',
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fontSize: '16px',
+    fontSize: '18px',
     lineHeight: '16px',
     borderBottom: '1px solid #CACACA;',
     margin: 0,
   },
 
   paper_center: {
-    width: '629px',
-    height: '469px',
+    width: '968px',
+    height: '650px',
     background: '#fff',
     textAlign: 'center',
   },
@@ -41,17 +41,17 @@ const useStyles = makeStyles(theme => ({
 
   left_grid: {
     display: 'flex',
-    width: '316px',
-    height: '330px',
+    width: '450px',
+    height: '450px',
   },
 
   cell_box_left: {
-    width: '125px',
+    width: '214px',
     borderRight: '1px solid #CACACA',
   },
 
   cell_box_right: {
-    width: '191px',
+    width: '270px',
     borderRight: '1px solid #CACACA',
   },
 
@@ -59,34 +59,34 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '47px',
+    height: '64.3px',
     borderBottom: '1px solid #CACACA',
   },
 
   input_style: {
-    paddingLeft: '10px',
+    paddingLeft: '18px',
     background: '#F1F0F0',
     border: '1px solid #CACACA',
-    width: '170px',
-    height: '30px',
+    width: '234px',
+    height: '45px',
   },
 
   input_style_calcu: {
-    paddingLeft: '10px',
+    paddingLeft: '18px',
     background: '#F1F0F0',
     border: '1px solid #CACACA',
-    width: '226px',
-    height: '36px',
+    width: '262px',
+    height: '52px',
   },
 
   total_box: {
-    marginRight: '6rem',
-    marginLeft: '1rem',
+    margin: '2rem 11.5rem 0 1rem',
   },
 
   label: {
     margin: 0,
     paddingBottom: '2px',
+    paddingLeft: '10px',
     textAlign: 'start',
     fontSize: '14px',
   },

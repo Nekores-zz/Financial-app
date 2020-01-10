@@ -6,23 +6,6 @@ const lorem = `Lorem ipsum dolor sit amet, `;
 
 const columnNames = ['Lorem', 'Ipsum', 'Consectetur', 'Eiusmod'];
 
-// const cardColors = [
-//   'azure',
-//   'beige',
-//   'bisque',
-//   'blanchedalmond',
-//   'burlywood',
-//   'cornsilk',
-//   'gainsboro',
-//   'ghostwhite',
-//   'ivory',
-//   'khaki',
-// ];
-// const pickColor = () => {
-//   let rand = Math.floor(Math.random() * 10);
-//   return cardColors[rand];
-// };
-
 class DragableCards extends Component {
   constructor() {
     super();

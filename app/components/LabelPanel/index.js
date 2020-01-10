@@ -12,8 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    width: '130px',
-    height: '467px',
+    width: '207px',
+    height: '651px',
     background: '#fff',
     margin: '0 auto',
     borderRadius: 0,
@@ -22,12 +22,12 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fontSize: '12px',
+    fontSize: '14px',
     lineHeight: '14px',
   },
   title_box: {
-    width: '130px',
-    height: '36px',
+    width: '207px',
+    height: '55px',
     display: 'flex',
     alignItems: 'center',
     paddingLeft: '8px',
@@ -40,7 +40,7 @@ function LabelPanel(props) {
   return (
     <Paper className={classes.paper}>
       <div className={classes.title_box}>
-        <h5 className={classes.section_title}>Label</h5>
+        <h5 className={classes.section_title}>Labels</h5>
       </div>
       {props.children}
     </Paper>

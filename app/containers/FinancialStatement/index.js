@@ -20,9 +20,10 @@ import Board from '../../components/Board';
 import Input from '../../components/Input';
 import H3 from '../../components/H3';
 import H4 from '../../components/H4';
-import { LeftLabelPanel, RightLabelPanel } from './AsideLabelPanel';
+import LabelPanel from './AsideLabelPanel';
 import makeSelectFinancialStatement from './selectors';
 import reducer from './reducer';
+import { cellLeft, cellRight } from './cellArray';
 
 const getNumber = function(number) {
   return number && number.constructor == Number ? number : 0;
@@ -32,22 +33,22 @@ export function FinancialStatement() {
   useInjectReducer({ key: 'financialStatement', reducer });
   const classes = useStyles();
   const [stateOne, setStateOne] = useState({
-    input1: 0,
-    input2: 0,
-    input3: 0,
-    input4: 0,
-    input5: 0,
-    input6: 0,
-    input7: 0,
+    input1: '',
+    input2: '',
+    input3: '',
+    input4: '',
+    input5: '',
+    input6: '',
+    input7: '',
   });
   const [stateTwo, setStateTwo] = useState({
-    input8: 0,
-    input9: 0,
-    input10: 0,
-    input11: 0,
-    input12: 0,
-    input13: 0,
-    input14: 0,
+    input8: '',
+    input9: '',
+    input10: '',
+    input11: '',
+    input12: '',
+    input13: '',
+    input14: '',
   });
   const handleChange = (event, item) => {
     setStateOne({
@@ -89,8 +90,8 @@ export function FinancialStatement() {
       </Helmet>
       <Widget className={classes.root}>
         <Grid container className={classes.main_container} spacing={3}>
-          <LeftLabelPanel />
-          <Grid item xs={12} sm={8}>
+          <LabelPanel id="left" data={cellLeft} />
+          <Grid>
             <Paper square elevation={2} className={classes.paper_center}>
               <H3
                 text="Assets = Liabilities + Owner's Equity"
@@ -98,7 +99,7 @@ export function FinancialStatement() {
               />
               <Widget className={classes.center_box}>
                 <Grid className={classes.left_grid} sm={6}>
-                  <Board id="board-2" className="board">
+                  <Board id="left" className="board">
                     <Widget className={classes.cell_box_left}>
                       {freeCells.map(cell => (
                         <Widget className={classes.cell} />
@@ -120,14 +121,17 @@ export function FinancialStatement() {
                   </Widget>
                 </Grid>
                 <Grid className={classes.left_grid} sm={6}>
-                  <Board id="board-2" className="board">
+                  <Board id="right" className="board">
                     <Widget className={classes.cell_box_left}>
                       {freeCells.map(cell => (
                         <Widget className={classes.cell} />
                       ))}
                     </Widget>
                   </Board>
-                  <Widget className={classes.cell_box_right}>
+                  <Widget
+                    className={classes.cell_box_right}
+                    style={{ borderRight: 0 }}
+                  >
                     {inputsArray.map(item => (
                       <Widget className={classes.cell}>
                         <Input
@@ -159,7 +163,7 @@ export function FinancialStatement() {
                     }
                   />
                 </Widget>
-                <Widget>
+                <Widget className={classes.total_box}>
                   <H4
                     className={classes.label}
                     text="Total Liabilities & Owner’s Equity"
@@ -181,7 +185,7 @@ export function FinancialStatement() {
               </Widget>
             </Paper>
           </Grid>
-          <RightLabelPanel />
+          <LabelPanel id="right" data={cellRight} />
         </Grid>
       </Widget>
     </Widget>
