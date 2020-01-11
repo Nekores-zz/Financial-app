@@ -20,6 +20,16 @@ const useStyles = makeStyles(theme => ({
     fontSize: '14px',
     lineHeight: '14px',
     textAlign: 'start',
+    '@media (max-width: 992px)': {
+      width: '168.5px',
+      height: '44px',
+    },
+    '@media (max-width: 576px)': {
+      width: '76.5px',
+      height: '26px',
+      fontSize: '9px',
+      lineHeight: 1,
+    },
   },
 }));
 

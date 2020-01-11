@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
     left: 16,
     fontSize: '18px',
     color: '#656565',
+    '@media (max-width: 576px)': {
+      fontSize: '12px',
+    },
   },
 }));
 
@@ -28,7 +31,6 @@ function Input(props) {
     <div className={classes.input_box}>
       <p className={classes.dollor}>$</p>
       <input
-        // placeholder={props.placeholder}
         className={props.className}
         value={props.value}
         name={props.name}

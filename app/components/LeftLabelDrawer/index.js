@@ -4,12 +4,10 @@
  *
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -40,6 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    marginLeft: 0,
   },
   hide: {
     display: 'none',
@@ -50,6 +49,12 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    '@media (max-width: 992px)': {
+      width: '187px',
+    },
+    '@media (max-width: 576px)': {
+      width: '94px',
+    },
   },
   left_drawer_btn: {
     position: 'absolute',
@@ -88,7 +93,7 @@ const useStyles = makeStyles(theme => ({
 const LeftLabelDrawer = props => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -99,7 +104,7 @@ const LeftLabelDrawer = props => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={props.style}>
       <Toolbar className={classes.left_drawer_btn}>
         <IconButton
           aria-label="open drawer"
@@ -133,13 +138,6 @@ const LeftLabelDrawer = props => {
         </div>
         {props.children}
       </Drawer>
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
-        <div className={classes.drawerHeader} />
-      </main>
     </div>
   );
 };

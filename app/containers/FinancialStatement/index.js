@@ -42,26 +42,34 @@ export function FinancialStatement() {
     input5: '',
     input6: '',
     input7: '',
+    input8: '',
   });
   const [stateTwo, setStateTwo] = useState({
-    input8: '',
     input9: '',
     input10: '',
     input11: '',
     input12: '',
     input13: '',
     input14: '',
+    input15: '',
+    input16: '',
   });
   const handleChange = (event, item) => {
+    let arr = event.target.value.split('+');
+    let a = 0;
+    arr.forEach(i => (a = a + parseInt(i ? i : 0)));
     setStateOne({
       ...stateOne,
-      [item]: parseInt(event.target.value),
+      [item]: a,
     });
   };
   const handleChangeInputTwo = (event, item) => {
+    let arrTwo = event.target.value.split('+');
+    let b = 0;
+    arrTwo.forEach(i => (b = b + parseInt(i ? i : 0)));
     setStateTwo({
       ...stateTwo,
-      [item]: parseInt(event.target.value),
+      [item]: b,
     });
   };
   const inputsArray = [
@@ -72,6 +80,7 @@ export function FinancialStatement() {
     'input5',
     'input6',
     'input7',
+    'input8',
   ];
 
   const freeCells = [
@@ -82,7 +91,12 @@ export function FinancialStatement() {
     { className: classes.cell },
     { className: classes.cell },
     { className: classes.cell },
+    { className: classes.cell },
   ];
+
+  let x = window.matchMedia('(max-width: 1366px)');
+
+  console.log(x.matches, 'x');
 
   return (
     <Widget>
@@ -92,10 +106,14 @@ export function FinancialStatement() {
       </Helmet>
       <Widget className={classes.root}>
         <Grid container className={classes.main_container} spacing={3}>
-          <LeftLabelDrawer>
+          {x.matches ? (
+            <LeftLabelDrawer>
+              <LabelPanel id="left" data={cellLeft} />
+            </LeftLabelDrawer>
+          ) : (
             <LabelPanel id="left" data={cellLeft} />
-          </LeftLabelDrawer>
-          <Grid>
+          )}
+          <Widget>
             <Paper square elevation={2} className={classes.paper_center}>
               <H3
                 text="Assets = Liabilities + Owner's Equity"
@@ -114,7 +132,7 @@ export function FinancialStatement() {
                     {inputsArray.map(item => (
                       <Widget className={classes.cell}>
                         <Input
-                          type="number"
+                          type="text"
                           className={classes.input_style}
                           placeholder="$"
                           name={item}
@@ -139,7 +157,7 @@ export function FinancialStatement() {
                     {inputsArray.map(item => (
                       <Widget className={classes.cell}>
                         <Input
-                          type="number"
+                          type="text"
                           className={classes.input_style}
                           placeholder="$"
                           name={item}
@@ -163,11 +181,15 @@ export function FinancialStatement() {
                       getNumber(stateOne.input4) +
                       getNumber(stateOne.input5) +
                       getNumber(stateOne.input6) +
-                      getNumber(stateOne.input7)
+                      getNumber(stateOne.input7) +
+                      getNumber(stateOne.input8)
                     }
                   />
                 </Widget>
-                <Widget className={classes.total_box}>
+                <Widget
+                  className={classes.total_box}
+                  style={{ borderRight: 'none' }}
+                >
                   <H4
                     className={classes.label}
                     text="Total Liabilities & Owner’s Equity"
@@ -182,16 +204,21 @@ export function FinancialStatement() {
                       getNumber(stateTwo.input4) +
                       getNumber(stateTwo.input5) +
                       getNumber(stateTwo.input6) +
-                      getNumber(stateTwo.input7)
+                      getNumber(stateTwo.input7) +
+                      getNumber(stateTwo.input8)
                     }
                   />
                 </Widget>
               </Widget>
             </Paper>
-          </Grid>
-          <RightLabelDrawer>
+          </Widget>
+          {x.matches ? (
+            <RightLabelDrawer>
+              <LabelPanel id="right" data={cellRight} />
+            </RightLabelDrawer>
+          ) : (
             <LabelPanel id="right" data={cellRight} />
-          </RightLabelDrawer>
+          )}
         </Grid>
       </Widget>
     </Widget>

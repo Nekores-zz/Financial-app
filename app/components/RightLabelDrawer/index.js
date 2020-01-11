@@ -8,21 +8,11 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-// import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-// import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
 
 const drawerWidth = 208;
 
@@ -38,14 +28,14 @@ const useStyles = makeStyles(theme => ({
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
-    marginRight: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    marginRight: drawerWidth,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  title: {
+    flexGrow: 1,
   },
   hide: {
     display: 'none',
@@ -54,20 +44,26 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     flexShrink: 0,
   },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  left_drawer_btn: {
+  right_drawer_btn: {
     position: 'absolute',
     top: 0,
     right: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    '@media (max-width: 992px)': {
+      width: '187px',
+    },
+    '@media (max-width: 576px)': {
+      width: '94px',
+    },
   },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
   },
   content: {
     flexGrow: 1,
@@ -90,7 +86,7 @@ const useStyles = makeStyles(theme => ({
 const RightLabelDrawer = props => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -102,7 +98,7 @@ const RightLabelDrawer = props => {
 
   return (
     <div className={classes.root}>
-      <Toolbar className={classes.left_drawer_btn}>
+      <Toolbar className={classes.right_drawer_btn}>
         <IconButton
           aria-label="open drawer"
           onClick={handleDrawerOpen}
@@ -132,13 +128,6 @@ const RightLabelDrawer = props => {
         </div>
         {props.children}
       </Drawer>
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
-        <div className={classes.drawerHeader} />
-      </main>
     </div>
   );
 };
