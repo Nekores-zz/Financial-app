@@ -4,7 +4,30 @@ import { applyDrag, generateItems } from './utils';
 
 const lorem = `Lorem ipsum dolor sit amet, `;
 
-const columnNames = ['Lorem', 'Ipsum', 'Consectetur', 'Eiusmod'];
+const columnNames = ['Lorem', 'Ipsum'];
+
+const newArray = [
+  { type: 'draggable', id: '00', data: 'hello world, ' },
+  { type: 'draggable', id: '01', data: 'boodbuy asdsd, ' },
+  { type: 'draggable', id: '02', data: 'Lorem ipsum dolor sit amet, ' },
+  { type: 'draggable', id: '03', data: 'Ladsdsadam dolor sit amet, ' },
+];
+const colNewArray = [
+  {
+    id: 'column0',
+    type: 'container',
+    name: 'column0',
+    props: { orientation: 'vertical', className: 'card-container' },
+    children: newArray,
+  },
+  {
+    id: 'column2',
+    type: 'container',
+    name: 'column1',
+    props: { orientation: 'vertical', className: 'card-container' },
+    children: newArray,
+  },
+];
 
 class DragableCards extends Component {
   constructor() {
@@ -50,7 +73,8 @@ class DragableCards extends Component {
             className: 'cards-drop-preview',
           }}
         >
-          {this.state.scene.children.map(column => {
+          {colNewArray.map(column => {
+            console.log(this.state.scene.children, 'hell');
             return (
               <Draggable key={column.id}>
                 <div className={column.props.className}>
@@ -61,7 +85,10 @@ class DragableCards extends Component {
                   <Container
                     {...column.props}
                     groupName="col"
-                    onDrop={e => this.onCardDrop(column.id, e)}
+                    onDrop={e => {
+                      // e.preventDefault();
+                      this.onCardDrop(column.id, e);
+                    }}
                     getChildPayload={index =>
                       this.getCardPayload(column.id, index)
                     }
@@ -75,6 +102,7 @@ class DragableCards extends Component {
                     dropPlaceholderAnimationDuration={200}
                   >
                     {column.children.map(card => {
+                      console.log(column.children, 'noway');
                       return (
                         <Draggable key={card.id}>
                           <div {...card.props}>

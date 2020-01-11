@@ -18,6 +18,8 @@ import Grid from '@material-ui/core/Grid';
 import Widget from '../../components/Widget';
 import Board from '../../components/Board';
 import Input from '../../components/Input';
+import LeftLabelDrawer from '../../components/LeftLabelDrawer';
+import RightLabelDrawer from '../../components/RightLabelDrawer';
 import H3 from '../../components/H3';
 import H4 from '../../components/H4';
 import LabelPanel from './AsideLabelPanel';
@@ -90,7 +92,9 @@ export function FinancialStatement() {
       </Helmet>
       <Widget className={classes.root}>
         <Grid container className={classes.main_container} spacing={3}>
-          <LabelPanel id="left" data={cellLeft} />
+          <LeftLabelDrawer>
+            <LabelPanel id="left" data={cellLeft} />
+          </LeftLabelDrawer>
           <Grid>
             <Paper square elevation={2} className={classes.paper_center}>
               <H3
@@ -185,7 +189,9 @@ export function FinancialStatement() {
               </Widget>
             </Paper>
           </Grid>
-          <LabelPanel id="right" data={cellRight} />
+          <RightLabelDrawer>
+            <LabelPanel id="right" data={cellRight} />
+          </RightLabelDrawer>
         </Grid>
       </Widget>
     </Widget>
