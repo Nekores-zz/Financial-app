@@ -58,6 +58,30 @@ const useStyles = makeStyles(theme => ({
       marginTop: '-10rem',
     },
   },
+  slide_true: {
+    '@media (max-width: 1024px)': {
+      marginRight: '-11rem',
+      transition: '.13s ease-in-out',
+    },
+  },
+  slide_false: {
+    '@media (max-width: 1024px)': {
+      marginRight: '0',
+      transition: '.13s ease-in-out',
+    },
+  },
+  slide_Two_true: {
+    '@media (max-width: 1024px)': {
+      marginLeft: '-11rem',
+      transition: '.13s ease-in-out',
+    },
+  },
+  slide_Two_false: {
+    '@media (max-width: 1024px)': {
+      marginLeft: '0',
+      transition: '.13s ease-in-out',
+    },
+  },
 
   center_box: {
     display: 'flex',

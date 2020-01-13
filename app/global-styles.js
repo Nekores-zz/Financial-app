@@ -13,6 +13,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
 
+  .draggable-item {
+    border: 1px solid black
+    margin:5px
+  }
+
   body.fontLoaded {
     font-family: 'Roboto', sans-serif;
   }

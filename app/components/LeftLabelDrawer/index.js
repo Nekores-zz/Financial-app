@@ -9,14 +9,12 @@ import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import LabelButton from '../../components/LabelButton';
 
-const drawerWidth = 208;
+const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,6 +37,9 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
     marginLeft: 0,
+    '&:hover': {
+      background: 'transparent !important',
+    },
   },
   hide: {
     display: 'none',
@@ -61,6 +62,15 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     left: 0,
   },
+  left_btn: {
+    position: 'fixed',
+    left: -15,
+    top: 12,
+    '@media (max-width: 576px)': {
+      fontSize: '9px',
+      fontWeight: 800,
+    },
+  },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
@@ -70,7 +80,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerclose: {
     position: 'absolute',
-    left: 0,
+    right: 0,
   },
   content: {
     flexGrow: 1,
@@ -88,20 +98,22 @@ const useStyles = makeStyles(theme => ({
     }),
     marginLeft: 0,
   },
+  d_none: {
+    '@media (max-width: 576px)': {
+      display: 'none',
+    },
+  },
+  d_block: {
+    '@media (max-width: 576px)': {
+      display: 'block',
+    },
+  },
 }));
 
 const LeftLabelDrawer = props => {
+  const { handleDrawerOpen, handleDrawerClose, open, openTwo } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div className={classes.root} style={props.style}>
@@ -112,7 +124,14 @@ const LeftLabelDrawer = props => {
           edge="start"
           className={clsx(classes.menuButton, open && classes.hide)}
         >
-          <MenuIcon />
+          <LabelButton
+            className={`${classes.left_btn} + ${
+              openTwo ? classes.d_none : classes.d_block
+            }`}
+          >
+            <ChevronLeftIcon />
+            Labels
+          </LabelButton>
         </IconButton>
       </Toolbar>
       <Drawer

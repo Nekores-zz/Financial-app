@@ -54,6 +54,24 @@ export function FinancialStatement() {
     input15: '',
     input16: '',
   });
+  const [open, setOpen] = React.useState(false);
+  const [openTwo, setOpenTwo] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+  const handleDrawerOpenTwo = () => {
+    setOpenTwo(true);
+  };
+
+  const handleDrawerCloseTwo = () => {
+    setOpenTwo(false);
+  };
+
   const handleChange = (event, item) => {
     let arr = event.target.value.split('+');
     let a = 0;
@@ -96,8 +114,6 @@ export function FinancialStatement() {
 
   let x = window.matchMedia('(max-width: 1366px)');
 
-  console.log(x.matches, 'x');
-
   return (
     <Widget>
       <Helmet>
@@ -107,14 +123,27 @@ export function FinancialStatement() {
       <Widget className={classes.root}>
         <Grid container className={classes.main_container} spacing={3}>
           {x.matches ? (
-            <LeftLabelDrawer>
+            <LeftLabelDrawer
+              handleDrawerOpen={handleDrawerOpen}
+              handleDrawerClose={handleDrawerClose}
+              open={open}
+              openTwo={openTwo}
+            >
               <LabelPanel id="left" data={cellLeft} />
             </LeftLabelDrawer>
           ) : (
             <LabelPanel id="left" data={cellLeft} />
           )}
           <Widget>
-            <Paper square elevation={2} className={classes.paper_center}>
+            <Paper
+              square
+              elevation={2}
+              className={`${classes.paper_center} + ${
+                open ? classes.slide_true : classes.slide_false
+              } + ${
+                openTwo ? classes.slide_Two_true : classes.slide_Two_false
+              }`}
+            >
               <H3
                 text="Assets = Liabilities + Owner's Equity"
                 className={classes.title_center}
@@ -213,7 +242,13 @@ export function FinancialStatement() {
             </Paper>
           </Widget>
           {x.matches ? (
-            <RightLabelDrawer>
+            <RightLabelDrawer
+              handleDrawerOpenTwo={handleDrawerOpenTwo}
+              handleDrawerCloseTwo={handleDrawerCloseTwo}
+              openTwo={openTwo}
+              open={open}
+              btnClass={open ? classes.d_none : classes.d_block}
+            >
               <LabelPanel id="right" data={cellRight} />
             </RightLabelDrawer>
           ) : (

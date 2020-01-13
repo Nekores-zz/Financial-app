@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
     background: '#fff',
     margin: '0 auto',
     borderRadius: 0,
+    '@media (max-width: 576px)': {
+      width: '94px',
+    },
   },
   section_title: {
     fontFamily: 'Roboto',
@@ -24,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold',
     fontSize: '14px',
     lineHeight: '14px',
+    '@media (max-width: 576px)': {
+      fontSize: '10px',
+    },
   },
   title_box: {
     width: '207px',
@@ -32,6 +38,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     paddingLeft: '8px',
     borderBottom: '1px solid #CACACA',
+    '@media (max-width: 576px)': {
+      width: '94px',
+    },
   },
 }));
 

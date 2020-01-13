@@ -37,7 +37,11 @@ function Label(props) {
   const classes = useStyles();
   return (
     <div
-      style={{ backgroundColor: props.bgColor, color: props.color }}
+      style={{
+        backgroundColor: props.bgColor,
+        color: props.color,
+        margin: props.margin,
+      }}
       className={classes.label_style}
     >
       {props.LabelText}

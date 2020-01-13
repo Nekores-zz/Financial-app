@@ -10,7 +10,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
-// import DragableCards from 'containers/DragableCards';
+import DragableCards from 'containers/DragableCards';
 import FinancialStatement from 'containers/FinancialStatement';
 
 import GlobalStyle from '../../global-styles';

@@ -10,9 +10,9 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import LabelButton from '../../components/LabelButton';
 
 const drawerWidth = 208;
 
@@ -25,6 +25,11 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+  },
+  menuButton: {
+    '&:hover': {
+      background: 'transparent !important',
+    },
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -49,6 +54,15 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     right: 0,
   },
+  right_btn: {
+    position: 'fixed',
+    right: -15,
+    top: 12,
+    '@media (max-width: 576px)': {
+      fontSize: '9px',
+      fontWeight: 800,
+    },
+  },
   drawerPaper: {
     width: drawerWidth,
     '@media (max-width: 992px)': {
@@ -64,6 +78,10 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
+  },
+  drawerclose: {
+    position: 'absolute',
+    left: 0,
   },
   content: {
     flexGrow: 1,
@@ -81,44 +99,56 @@ const useStyles = makeStyles(theme => ({
     }),
     marginRight: 0,
   },
+  d_none: {
+    '@media (max-width: 576px)': {
+      display: 'none',
+    },
+  },
+  d_block: {
+    '@media (max-width: 576px)': {
+      display: 'block',
+    },
+  },
 }));
 
 const RightLabelDrawer = props => {
+  const { handleDrawerOpenTwo, handleDrawerCloseTwo, openTwo, open } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div className={classes.root}>
       <Toolbar className={classes.right_drawer_btn}>
         <IconButton
           aria-label="open drawer"
-          onClick={handleDrawerOpen}
+          onClick={handleDrawerOpenTwo}
           edge="start"
-          className={clsx(classes.menuButton, open && classes.hide)}
+          className={clsx(classes.menuButton, openTwo && classes.hide)}
         >
-          <MenuIcon />
+          <LabelButton
+            className={`${classes.right_btn} + ${
+              open ? classes.d_none : classes.d_block
+            }`}
+          >
+            Labels
+            <ChevronRightIcon />
+          </LabelButton>
         </IconButton>
       </Toolbar>
       <Drawer
         className={classes.drawer}
         variant="persistent"
         anchor="right"
-        open={open}
+        open={openTwo}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton
+            className={classes.drawerclose}
+            onClick={handleDrawerCloseTwo}
+          >
             {theme.direction === 'rtl' ? (
               <ChevronLeftIcon />
             ) : (
