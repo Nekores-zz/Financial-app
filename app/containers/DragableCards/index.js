@@ -9,7 +9,7 @@ import Label from '../../components/Label';
 
 const groupStyle = {
   marginLeft: '50px',
-  width: '171px',
+  width: '207px',
   height: '376px',
   border: '1px solid black',
 };
@@ -43,7 +43,7 @@ const DragableCards = () => {
         bgColor: '#8bc34a',
       },
     ],
-    items2: generateItems(15, i => ({
+    items2: generateItems(6, i => ({
       id: '10' + i,
     })),
   });
@@ -70,12 +70,8 @@ const DragableCards = () => {
         >
           {state.items1.map(p => {
             return (
-              <Draggable key={p.id}>
-                <Label
-                  style={{ margin: '16px' }}
-                  bgColor={p.bgColor}
-                  LabelText={p.LabelText}
-                />
+              <Draggable key={p.id} style={{ margin: '7px' }}>
+                <Label bgColor={p.bgColor} LabelText={p.LabelText} />
               </Draggable>
             );
           })}
@@ -94,12 +90,8 @@ const DragableCards = () => {
         >
           {state.items2.map(p => {
             return (
-              <Draggable>
-                <Label
-                  style={{ margin: '16px' }}
-                  bgColor={p.bgColor}
-                  LabelText={p.LabelText}
-                />
+              <Draggable key={p.id} style={{ margin: '7px' }}>
+                <Label bgColor={p.bgColor} LabelText={p.LabelText} />
               </Draggable>
             );
           })}

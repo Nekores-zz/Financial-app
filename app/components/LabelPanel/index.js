@@ -13,12 +13,16 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   paper: {
     width: '207px',
-    height: '706px',
+    height: '744px',
     background: '#fff',
-    margin: '0 auto',
+    margin: '0 2rem',
     borderRadius: 0,
+    '@media (max-width: 1366px)': {
+      marginTop: '-3.5rem',
+      marginLeft: '0',
+    },
     '@media (max-width: 576px)': {
-      width: '94px',
+      width: '84px',
     },
   },
   section_title: {
@@ -39,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '8px',
     borderBottom: '1px solid #CACACA',
     '@media (max-width: 576px)': {
-      width: '94px',
+      width: '84px',
     },
   },
 }));

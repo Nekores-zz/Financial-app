@@ -14,11 +14,12 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import LabelButton from '../../components/LabelButton';
 
-const drawerWidth = 200;
+const drawerWidth = 208;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    zIndex: 0,
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -54,7 +55,7 @@ const useStyles = makeStyles(theme => ({
       width: '187px',
     },
     '@media (max-width: 576px)': {
-      width: '94px',
+      width: '84px',
     },
   },
   left_drawer_btn: {
@@ -64,9 +65,12 @@ const useStyles = makeStyles(theme => ({
   },
   left_btn: {
     position: 'fixed',
-    left: -15,
+    left: -5,
     top: 12,
+    backgroundColor: '#9be3de ',
     '@media (max-width: 576px)': {
+      boxShadow: 'none',
+      left: 12,
       fontSize: '9px',
       fontWeight: 800,
     },
@@ -129,7 +133,6 @@ const LeftLabelDrawer = props => {
               openTwo ? classes.d_none : classes.d_block
             }`}
           >
-            <ChevronLeftIcon />
             Labels
           </LabelButton>
         </IconButton>

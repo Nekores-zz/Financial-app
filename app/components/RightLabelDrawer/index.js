@@ -19,6 +19,7 @@ const drawerWidth = 208;
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    zIndex: 0,
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -56,9 +57,12 @@ const useStyles = makeStyles(theme => ({
   },
   right_btn: {
     position: 'fixed',
-    right: -15,
+    right: -5,
     top: 12,
+    backgroundColor: '#9be3de ',
     '@media (max-width: 576px)': {
+      right: 12,
+      boxShadow: 'none',
       fontSize: '9px',
       fontWeight: 800,
     },
@@ -69,7 +73,7 @@ const useStyles = makeStyles(theme => ({
       width: '187px',
     },
     '@media (max-width: 576px)': {
-      width: '94px',
+      width: '85px',
     },
   },
   drawerHeader: {
@@ -81,7 +85,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerclose: {
     position: 'absolute',
-    left: 0,
+    right: 0,
   },
   content: {
     flexGrow: 1,
@@ -131,7 +135,6 @@ const RightLabelDrawer = props => {
             }`}
           >
             Labels
-            <ChevronRightIcon />
           </LabelButton>
         </IconButton>
       </Toolbar>

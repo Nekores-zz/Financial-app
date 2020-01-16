@@ -25,10 +25,11 @@ const useStyles = makeStyles(theme => ({
       height: '44px',
     },
     '@media (max-width: 576px)': {
-      width: '76.5px',
-      height: '26px',
-      fontSize: '9px',
+      width: '73.5px',
+      height: '24px',
+      fontSize: '8px',
       lineHeight: 1,
+      padding: '4px',
     },
   },
 }));
