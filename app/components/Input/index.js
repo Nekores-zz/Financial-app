@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     paddingRight: '10px',
+    '@media (max-width: 576px)': {
+      paddingRight: '6px',
+    },
   },
   dollor: {
     position: 'relative',
@@ -21,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     color: '#656565',
     '@media (max-width: 576px)': {
       fontSize: '12px',
+      left: 11,
     },
   },
 }));

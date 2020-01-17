@@ -12,6 +12,13 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
+    '@media (max-width: 576px)': {
+      alignItems: 'flex-start',
+      height: '100%',
+    },
+    '@media (max-width: 1024px)': {
+      height: '100%',
+    },
   },
 
   title_center: {
@@ -27,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     borderBottom: '1px solid #CACACA;',
     margin: 0,
     '@media (max-width: 576px)': {
-      fontSize: '12px',
+      fontSize: '11px',
       height: '33px',
     },
   },
@@ -43,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     background: '#fff',
     textAlign: 'center',
+    '@media (max-width: 1024px)': {
+      marginTop: '5rem',
+    },
     '@media (max-width: 992px)': {
       margin: '2rem auto',
       width: '80%',
@@ -50,28 +60,24 @@ const useStyles = makeStyles(theme => ({
     '@media (max-width: 768px)': {
       width: '750px',
       margin: '0 auto',
-      marginTop: '-12rem',
+      marginTop: '4.5rem',
     },
     '@media (max-width: 576px)': {
-      // position: 'fixed',
-      // left: '9px',
-      // top: '170px',
       width: '360px',
       height: '330px',
-      margin: '0 auto',
-      // marginTop: '-18rem',
-    },
-    '@media (max-width: 411px)': {
-      marginTop: '-14rem',
-    },
-    '@media (max-width: 380px)': {
-      marginTop: '-10rem',
+      margin: '1.4rem auto',
     },
   },
   slide_true: {
     '@media (max-width: 1024px)': {
       marginRight: '-10rem',
       transition: '.13s ease-in-out',
+    },
+    '@media (max-width: 768px)': {
+      marginRight: '-13rem',
+    },
+    '@media (max-width: 576px)': {
+      marginRight: '-10rem',
     },
   },
   slide_false: {
@@ -101,8 +107,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     width: '450px',
     height: '514px',
+    '@media (min-width: 1024px)': {
+      height: '502px !important',
+    },
     '@media (min-width: 768px)': {
-      height: '554px',
+      height: '470px',
     },
     '@media (max-width: 576px)': {
       height: '239px',
@@ -123,6 +132,9 @@ const useStyles = makeStyles(theme => ({
     '@media (max-width: 992px)': {
       width: '170px',
     },
+    '@media (max-width: 768px)': {
+      width: '186px',
+    },
     '@media (max-width: 576px)': {
       width: '80px',
     },
@@ -142,10 +154,17 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: '10px auto',
     height: '51px',
-    margin: '10px 0',
+    '@media (max-width: 1024px)': {
+      margin: '10px auto',
+    },
     '@media (max-width: 992px)': {
       height: '58.3px',
+      margin: '0',
+    },
+    '@media (max-width: 768px)': {
+      margin: '0',
     },
     '@media (max-width: 576px)': {
       height: '29.3px',
@@ -163,6 +182,7 @@ const useStyles = makeStyles(theme => ({
       height: '38px',
     },
     '@media (max-width: 576px)': {
+      paddingLeft: '13px',
       height: '20px',
       fontSize: '10px',
     },
@@ -184,11 +204,14 @@ const useStyles = makeStyles(theme => ({
     width: '50%',
     padding: '1rem 0',
     borderRight: '1px solid #CACACA',
-    '@media (max-width: 768px)': {
-      padding: '1.5rem 0 !important',
-    },
     '@media (max-width: 992px)': {
       padding: '.5rem 0',
+    },
+    '@media (max-width: 768px)': {
+      padding: '1.5rem 0 ',
+    },
+    '@media (max-width: 576px)': {
+      padding: '0.25rem 0 ',
     },
   },
 
@@ -219,8 +242,8 @@ const useStyles = makeStyles(theme => ({
       marginTop: '-1.1rem',
     },
     '@media (max-width: 576px)': {
+      alignItems: 'flex-start',
       height: '21%',
-      // marginTop: '-3rem',
     },
   },
 }));

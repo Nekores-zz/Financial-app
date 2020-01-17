@@ -18,16 +18,18 @@ import Grid from '@material-ui/core/Grid';
 import Widget from '../../components/Widget';
 import Input from '../../components/Input';
 import Label from '../../components/Label';
+import LabelPanel from '../../components/LabelPanel';
 import { Container, Draggable } from 'react-smooth-dnd';
 import { applyDrag, generateItems } from './utils';
 import LeftLabelDrawer from '../../components/LeftLabelDrawer';
 import RightLabelDrawer from '../../components/RightLabelDrawer';
 import H3 from '../../components/H3';
 import H4 from '../../components/H4';
-import LabelPanel from '../../components/LabelPanel';
 import makeSelectFinancialStatement from './selectors';
 import reducer from './reducer';
 import { items1Arr, items3Arr } from './cellArray';
+import { LeftDnd } from './leftDnd';
+import { RightDnd } from './rightDnd';
 
 const getNumber = function(number) {
   return number && number.constructor == Number ? number : 0;
@@ -69,6 +71,19 @@ export function FinancialStatement() {
   const [open, setOpen] = React.useState(false);
   const [openTwo, setOpenTwo] = React.useState(false);
 
+  const handleLeftOnDrop = e => {
+    setState(s => ({
+      ...s,
+      items1: applyDrag(s.items1, e),
+    }));
+  };
+  const handleRightOnDrop = e => {
+    setRightStateLabels(s => ({
+      ...s,
+      items3: applyDrag(s.items3, e),
+    }));
+  };
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -85,25 +100,14 @@ export function FinancialStatement() {
   };
 
   const handleChange = (event, item) => {
-    let value = event.target.value;
-    try {
-      let c = eval(value);
-      let arr = event.target.value.split('+');
-      let a = 0;
-      arr.forEach(i => (a = a + parseInt(i ? i : 0)));
-      setStateOne({
-        ...stateOne,
-        [item]: a,
-      });
-    } catch (e) {
-      // event.target.value === '+' ||
-      // event.target.value > '0' ||
-      // event.target.value < '9'
-      //   ? (event.target.value = '')
-      // let reg = /[^a-zA-Z]/g;
-      // let num = event.target.value.match(reg);
-      // console.log(num, 'message');
-    }
+    let val = event.target.value;
+    let arr = val.split('+');
+    let a = 0;
+    arr.forEach(i => (a = a + parseInt(i ? i : 0)));
+    setStateOne({
+      ...stateOne,
+      [item]: a,
+    });
   };
   const handleChangeInputTwo = (event, item) => {
     let arrTwo = event.target.value.split('+');
@@ -142,48 +146,10 @@ export function FinancialStatement() {
               open={open}
               openTwo={openTwo}
             >
-              <LabelPanel>
-                <Container
-                  groupName="1"
-                  getChildPayload={i => state.items1[i]}
-                  onDrop={e =>
-                    setState(s => ({
-                      ...s,
-                      items1: applyDrag(s.items1, e),
-                    }))
-                  }
-                >
-                  {state.items1.map(p => {
-                    return (
-                      <Draggable className={classes.draggable} key={p.id}>
-                        <Label bgColor={p.bgColor} LabelText={p.LabelText} />
-                      </Draggable>
-                    );
-                  })}
-                </Container>
-              </LabelPanel>
+              <LeftDnd state={state} handleLeftOnDrop={handleLeftOnDrop} />
             </LeftLabelDrawer>
           ) : (
-            <LabelPanel>
-              <Container
-                groupName="1"
-                getChildPayload={i => state.items1[i]}
-                onDrop={e =>
-                  setState(s => ({
-                    ...s,
-                    items1: applyDrag(s.items1, e),
-                  }))
-                }
-              >
-                {state.items1.map(p => {
-                  return (
-                    <Draggable className={classes.draggable} key={p.id}>
-                      <Label bgColor={p.bgColor} LabelText={p.LabelText} />
-                    </Draggable>
-                  );
-                })}
-              </Container>
-            </LabelPanel>
+            <LeftDnd state={state} handleLeftOnDrop={handleLeftOnDrop} />
           )}
           <Widget className={classes.paper_center_box}>
             <Paper
@@ -332,56 +298,16 @@ export function FinancialStatement() {
               open={open}
               openTwo={openTwo}
             >
-              <LabelPanel>
-                <Container
-                  groupName="2"
-                  getChildPayload={i => rightStateLabels.items3[i]}
-                  onDrop={e =>
-                    setRightStateLabels(t => ({
-                      ...t,
-                      items3: applyDrag(t.items3, e),
-                    }))
-                  }
-                >
-                  {rightStateLabels.items3.map(p => {
-                    return (
-                      <Draggable className={classes.draggable} key={p.id}>
-                        <Label
-                          bgColor={p.bgColor}
-                          color={p.color}
-                          LabelText={p.LabelText}
-                        />
-                      </Draggable>
-                    );
-                  })}
-                </Container>
-              </LabelPanel>
+              <RightDnd
+                rightStateLabels={rightStateLabels}
+                handleRightOnDrop={handleRightOnDrop}
+              />
             </RightLabelDrawer>
           ) : (
-            <LabelPanel>
-              <Container
-                groupName="2"
-                getChildPayload={i => rightStateLabels.items3[i]}
-                onDrop={e =>
-                  setRightStateLabels(t => ({
-                    ...t,
-                    items3: applyDrag(t.items3, e),
-                  }))
-                }
-              >
-                {rightStateLabels.items3.map(p => {
-                  return (
-                    <Draggable className={classes.draggable} key={p.id}>
-                      <Label
-                        bgColor={p.bgColor}
-                        color={p.color}
-                        LabelText={p.LabelText}
-                      />
-                    </Draggable>
-                  );
-                })}
-              </Container>
-            </LabelPanel>
+            <RightDnd
+              rightStateLabels={rightStateLabels}
+              handleRightOnDrop={handleRightOnDrop}
+            />
           )}
         </Grid>
       </Widget>

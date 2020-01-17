@@ -66,13 +66,17 @@ const useStyles = makeStyles(theme => ({
   left_btn: {
     position: 'fixed',
     left: -5,
-    top: 12,
-    backgroundColor: '#9be3de ',
+    top: 14,
+    borderRadius: 0,
+    backgroundColor: '#7fcd91',
     '@media (max-width: 576px)': {
       boxShadow: 'none',
       left: 12,
       fontSize: '9px',
       fontWeight: 800,
+      width: '71px',
+      height: '24px',
+      lineHeight: 1,
     },
   },
   drawerHeader: {
@@ -85,6 +89,10 @@ const useStyles = makeStyles(theme => ({
   drawerclose: {
     position: 'absolute',
     right: 0,
+    '@media (max-width: 576px)': {
+      marginTop: '-6px',
+      right: -12,
+    },
   },
   content: {
     flexGrow: 1,

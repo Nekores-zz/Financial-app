@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   paper: {
     width: '207px',
-    height: '744px',
+    height: '690px',
     background: '#fff',
     margin: '0 2rem',
     borderRadius: 0,
@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
     borderBottom: '1px solid #CACACA',
     '@media (max-width: 576px)': {
       width: '84px',
+      height: '44px',
     },
   },
 }));
