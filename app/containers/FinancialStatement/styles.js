@@ -89,7 +89,7 @@ const useStyles = makeStyles(theme => ({
       marginLeft: '23rem !important',
     },
     '@media (max-width: 576px)': {
-      marginRight: '-10rem',
+      marginRight: '13rem',
     },
   },
   slide_false: {
@@ -157,11 +157,11 @@ const useStyles = makeStyles(theme => ({
   cell_box_right: {
     width: '270px',
     borderRight: '1px solid #CACACA',
-    '@media (max-width: 576px)': {
-      width: '100px',
-    },
     '@media (max-width: 768px)': {
       width: '191px',
+    },
+    '@media (max-width: 576px)': {
+      width: '100px',
     },
   },
 

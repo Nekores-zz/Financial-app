@@ -41,15 +41,19 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     line-height: 1.5em;
   }
+ 
+  @media (max-width: 768px) {
+    .paper .smooth-dnd-container{
+      width: 187px !important
+    }
+  }
   @media (max-width: 576px) {
     .cell_box_left .smooth-dnd-container {
       height: 29.7px;
       
     }
-  }
-  @media (max-width: 768px) {
     .paper .smooth-dnd-container{
-      width: 187px !important
+      width: 100% !important
     }
   }
 `;
