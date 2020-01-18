@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '14px',
     lineHeight: '14px',
     textAlign: 'start',
+    cursor: 'pointer',
     '@media (max-width: 992px)': {
       width: '168.5px',
       height: '44px',

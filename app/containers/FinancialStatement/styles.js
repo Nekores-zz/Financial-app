@@ -21,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
 
+  container_box: {
+    height: '60px',
+    borderBottom: '1px solid #CACACA important',
+  },
   title_center: {
     display: 'flex',
     alignItems: 'center',
@@ -39,9 +43,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   paper_center_box: {
+    '@media (max-width: 1024px)': {
+      display: 'flex',
+      justifyContent: 'center',
+    },
     '@media (max-width: 576px)': {
       display: 'flex',
       alignItems: 'start',
+      justifyContent: 'center',
       height: '45.5vh',
     },
   },
@@ -67,14 +76,17 @@ const useStyles = makeStyles(theme => ({
       height: '330px',
       margin: '1.4rem auto',
     },
+    // '@media (max-width: 411px)': {
+    //   margin: '3.4rem auto',
+    // },
   },
   slide_true: {
     '@media (max-width: 1024px)': {
-      marginRight: '-10rem',
+      marginLeft: '19rem !important',
       transition: '.13s ease-in-out',
     },
     '@media (max-width: 768px)': {
-      marginRight: '-13rem',
+      marginLeft: '23rem !important',
     },
     '@media (max-width: 576px)': {
       marginRight: '-10rem',
@@ -108,10 +120,10 @@ const useStyles = makeStyles(theme => ({
     width: '450px',
     height: '514px',
     '@media (min-width: 1024px)': {
-      height: '502px !important',
+      height: '501px !important',
     },
     '@media (min-width: 768px)': {
-      height: '470px',
+      height: '500px',
     },
     '@media (max-width: 576px)': {
       height: '239px',
@@ -119,16 +131,18 @@ const useStyles = makeStyles(theme => ({
   },
 
   draggable: {
-    margin: '10px',
+    display: 'flex !important',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '60px',
     '@media (max-width: 576px)': {
-      margin: '5px',
+      height: '30px',
     },
   },
 
   cell_box_left: {
-    width: '214px',
+    width: '240px',
     borderRight: '1px solid #CACACA',
-    borderBottom: '1px solid #CACACA',
     '@media (max-width: 992px)': {
       width: '170px',
     },
@@ -143,10 +157,11 @@ const useStyles = makeStyles(theme => ({
   cell_box_right: {
     width: '270px',
     borderRight: '1px solid #CACACA',
-    borderBottom: '1px solid #CACACA',
     '@media (max-width: 576px)': {
       width: '100px',
-      paddingTop: '1px',
+    },
+    '@media (max-width: 768px)': {
+      width: '191px',
     },
   },
 
@@ -154,10 +169,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '10px auto',
-    height: '51px',
+    height: '62.7px',
+    borderBottom: '1px solid #CACACA',
+
     '@media (max-width: 1024px)': {
-      margin: '10px auto',
+      // margin: '10px auto',
     },
     '@media (max-width: 992px)': {
       height: '58.3px',
@@ -165,9 +181,10 @@ const useStyles = makeStyles(theme => ({
     },
     '@media (max-width: 768px)': {
       margin: '0',
+      height: '62.7px',
     },
     '@media (max-width: 576px)': {
-      height: '29.3px',
+      height: '29.9px',
       margin: '0',
     },
   },
@@ -177,7 +194,7 @@ const useStyles = makeStyles(theme => ({
     background: '#F1F0F0',
     border: '1px solid #CACACA',
     width: '100%',
-    height: '51px',
+    height: '42px',
     '@media (max-width: 992px)': {
       height: '38px',
     },

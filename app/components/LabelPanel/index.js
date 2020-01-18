@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
     background: '#fff',
     margin: '0 2rem',
     borderRadius: 0,
+    overflowY: 'inherit',
+    '@media (max-width: 1449px)': {
+      margin: '0 auto',
+    },
     '@media (max-width: 1366px)': {
       marginTop: '-3.5rem',
       marginLeft: '0',
@@ -52,8 +56,8 @@ const useStyles = makeStyles(theme => ({
 function LabelPanel(props) {
   const classes = useStyles();
   return (
-    <Paper className={classes.paper} style={props.style}>
-      <div className={classes.title_box} style={props.style}>
+    <Paper className={`${classes.paper} paper`} style={props.style}>
+      <div className={`${classes.title_box} title_box`} style={props.style}>
         <h5 className={classes.section_title} style={props.style}>
           Labels
         </h5>

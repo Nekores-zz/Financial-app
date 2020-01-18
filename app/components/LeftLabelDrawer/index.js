@@ -78,6 +78,9 @@ const useStyles = makeStyles(theme => ({
       height: '24px',
       lineHeight: 1,
     },
+    // '@media (max-width: 411px)': {
+    //   left: 26,
+    // },
   },
   drawerHeader: {
     display: 'flex',

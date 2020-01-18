@@ -19,7 +19,11 @@ export function RightDnd(props) {
         {rightStateLabels.items3.map(p => {
           return (
             <Draggable className={classes.draggable} key={p.id}>
-              <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+              <Label
+                bgColor={p.bgColor}
+                color={p.color}
+                LabelText={p.LabelText}
+              />
             </Draggable>
           );
         })}

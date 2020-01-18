@@ -18,7 +18,6 @@ import Grid from '@material-ui/core/Grid';
 import Widget from '../../components/Widget';
 import Input from '../../components/Input';
 import Label from '../../components/Label';
-import LabelPanel from '../../components/LabelPanel';
 import { Container, Draggable } from 'react-smooth-dnd';
 import { applyDrag, generateItems } from './utils';
 import LeftLabelDrawer from '../../components/LeftLabelDrawer';
@@ -38,13 +37,43 @@ const getNumber = function(number) {
 export function FinancialStatement() {
   const [state, setState] = useState({
     items1: items1Arr,
-    items2: generateItems(1, i => ({
-      id: '10' + i,
+    items2: generateItems(0, i => ({
+      id: '20' + i,
+    })),
+    items5: generateItems(0, i => ({
+      id: '50' + i,
+    })),
+    items6: generateItems(0, i => ({
+      id: '60' + i,
+    })),
+    items7: generateItems(0, i => ({
+      id: '70' + i,
+    })),
+    items8: generateItems(0, i => ({
+      id: '80' + i,
+    })),
+    items9: generateItems(0, i => ({
+      id: '90' + i,
+    })),
+    items10: generateItems(0, i => ({
+      id: '100' + i,
+    })),
+    items11: generateItems(0, i => ({
+      id: '110' + i,
     })),
   });
   const [rightStateLabels, setRightStateLabels] = useState({
     items3: items3Arr,
-    items4: [{ id: '28', color: '#fff' }],
+    items4: [{ id: '28' }],
+    items12: [{ id: '29' }],
+    items13: [{ id: '30' }],
+    items14: [{ id: '31' }],
+    items15: [{ id: '32' }],
+    items16: [{ id: '33' }],
+    items17: [{ id: '34' }],
+    items18: [{ id: '35' }],
+    items19: [{ id: '36' }],
+    items20: [{ id: '37' }],
   });
   useInjectReducer({ key: 'financialStatement', reducer });
   const classes = useStyles();
@@ -167,8 +196,9 @@ export function FinancialStatement() {
               />
               <Widget className={classes.center_box}>
                 <Grid className={classes.left_grid} sm={6}>
-                  <Widget className={classes.cell_box_left}>
+                  <Widget className={`${classes.cell_box_left} cell_box_left`}>
                     <Container
+                      className="dnd_container"
                       groupName="1"
                       getChildPayload={i => state.items2[i]}
                       onDrop={e => {
@@ -179,6 +209,160 @@ export function FinancialStatement() {
                       }}
                     >
                       {state.items2.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      className="dnd_container"
+                      groupName="1"
+                      getChildPayload={i => state.items5[i]}
+                      onDrop={e => {
+                        setState(s => ({
+                          ...s,
+                          items5: applyDrag(s.items5, e),
+                        }));
+                      }}
+                    >
+                      {state.items5.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      className="dnd_container"
+                      groupName="1"
+                      getChildPayload={i => state.items6[i]}
+                      onDrop={e => {
+                        setState(s => ({
+                          ...s,
+                          items6: applyDrag(s.items6, e),
+                        }));
+                      }}
+                    >
+                      {state.items6.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      className="dnd_container"
+                      groupName="1"
+                      getChildPayload={i => state.items7[i]}
+                      onDrop={e => {
+                        setState(s => ({
+                          ...s,
+                          items7: applyDrag(s.items7, e),
+                        }));
+                      }}
+                    >
+                      {state.items7.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      className="dnd_container"
+                      groupName="1"
+                      getChildPayload={i => state.items8[i]}
+                      onDrop={e => {
+                        setState(s => ({
+                          ...s,
+                          items8: applyDrag(s.items8, e),
+                        }));
+                      }}
+                    >
+                      {state.items8.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      className="dnd_container"
+                      groupName="1"
+                      getChildPayload={i => state.items9[i]}
+                      onDrop={e => {
+                        setState(s => ({
+                          ...s,
+                          items9: applyDrag(s.items9, e),
+                        }));
+                      }}
+                    >
+                      {state.items9.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      className="dnd_container"
+                      groupName="1"
+                      getChildPayload={i => state.items10[i]}
+                      onDrop={e => {
+                        setState(s => ({
+                          ...s,
+                          items10: applyDrag(s.items10, e),
+                        }));
+                      }}
+                    >
+                      {state.items10.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      className="dnd_container"
+                      groupName="1"
+                      getChildPayload={i => state.items11[i]}
+                      onDrop={e => {
+                        setState(s => ({
+                          ...s,
+                          items11: applyDrag(s.items11, e),
+                        }));
+                      }}
+                    >
+                      {state.items11.map(p => {
                         return (
                           <Draggable className={classes.draggable} key={p.id}>
                             <Label
@@ -204,8 +388,11 @@ export function FinancialStatement() {
                     ))}
                   </Widget>
                 </Grid>
+
+                {/* right grid started */}
+
                 <Grid className={classes.left_grid} sm={6}>
-                  <Widget className={classes.cell_box_left}>
+                  <Widget className={`${classes.cell_box_left} cell_box_left`}>
                     <Container
                       groupName="2"
                       getChildPayload={i => rightStateLabels.items4[i]}
@@ -217,6 +404,160 @@ export function FinancialStatement() {
                       }}
                     >
                       {rightStateLabels.items4.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              color={p.color}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      groupName="2"
+                      getChildPayload={i => rightStateLabels.items12[i]}
+                      onDrop={e => {
+                        setRightStateLabels(s => ({
+                          ...s,
+                          items12: applyDrag(s.items12, e),
+                        }));
+                      }}
+                    >
+                      {rightStateLabels.items12.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              color={p.color}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      groupName="2"
+                      getChildPayload={i => rightStateLabels.items13[i]}
+                      onDrop={e => {
+                        setRightStateLabels(s => ({
+                          ...s,
+                          items13: applyDrag(s.items13, e),
+                        }));
+                      }}
+                    >
+                      {rightStateLabels.items13.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              color={p.color}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      groupName="2"
+                      getChildPayload={i => rightStateLabels.items14[i]}
+                      onDrop={e => {
+                        setRightStateLabels(s => ({
+                          ...s,
+                          items14: applyDrag(s.items14, e),
+                        }));
+                      }}
+                    >
+                      {rightStateLabels.items14.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              color={p.color}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      groupName="2"
+                      getChildPayload={i => rightStateLabels.items15[i]}
+                      onDrop={e => {
+                        setRightStateLabels(s => ({
+                          ...s,
+                          items15: applyDrag(s.items15, e),
+                        }));
+                      }}
+                    >
+                      {rightStateLabels.items15.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              color={p.color}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      groupName="2"
+                      getChildPayload={i => rightStateLabels.items16[i]}
+                      onDrop={e => {
+                        setRightStateLabels(s => ({
+                          ...s,
+                          items16: applyDrag(s.items16, e),
+                        }));
+                      }}
+                    >
+                      {rightStateLabels.items16.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              color={p.color}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      groupName="2"
+                      getChildPayload={i => rightStateLabels.items17[i]}
+                      onDrop={e => {
+                        setRightStateLabels(s => ({
+                          ...s,
+                          items17: applyDrag(s.items17, e),
+                        }));
+                      }}
+                    >
+                      {rightStateLabels.items17.map(p => {
+                        return (
+                          <Draggable className={classes.draggable} key={p.id}>
+                            <Label
+                              bgColor={p.bgColor}
+                              color={p.color}
+                              LabelText={p.LabelText}
+                            />
+                          </Draggable>
+                        );
+                      })}
+                    </Container>
+                    <Container
+                      groupName="2"
+                      getChildPayload={i => rightStateLabels.items18[i]}
+                      onDrop={e => {
+                        setRightStateLabels(s => ({
+                          ...s,
+                          items18: applyDrag(s.items18, e),
+                        }));
+                      }}
+                    >
+                      {rightStateLabels.items18.map(p => {
                         return (
                           <Draggable className={classes.draggable} key={p.id}>
                             <Label
