@@ -11,7 +11,7 @@ export const items1Arr = [
   },
   {
     id: '3',
-    LabelText: 'Pre-Paid Expensis',
+    LabelText: 'Pre-Paid Expenses',
     bgColor: '#ff9800',
   },
   {
@@ -47,11 +47,7 @@ export const items3Arr = [
     LabelText: 'Provision for Warranty',
     bgColor: '#ffc0cb',
   },
-  {
-    id: '24',
-    LabelText: 'Accounts Receivable',
-    bgColor: '#ffc0cb',
-  },
+
   {
     id: '25',
     LabelText: 'Notes Payable',
