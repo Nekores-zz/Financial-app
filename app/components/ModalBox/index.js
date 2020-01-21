@@ -26,47 +26,46 @@ function getModalStyle() {
 
 const useStyles = makeStyles(theme => ({
   modalBox: {
-    display:"flex",
-    alignItems: "center",
-    justifyContent: "center",
-    
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     position: 'absolute',
-    width: "44%",
-    height: "57%",
-    display:"flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "transparent",
+    width: '44%',
+    height: '57%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
     padding: theme.spacing(2, 4, 3),
     '@media (max-width: 1024px)': {
-      height: "22px",
+      height: '22px',
     },
-    "&:focus": {
-      outline: "none !important"
-    }
+    '&:focus': {
+      outline: 'none !important',
+    },
   },
   playBox: {
-    display:"flex",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    cursor: "pointer",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    cursor: 'pointer',
   },
   howToUse: {
-    position: "relative",
-    left: "5px",
-    color: "#000",
+    position: 'relative',
+    left: '5px',
+    color: '#000',
     '@media (max-width: 576px)': {
-      fontSize: "14px",
+      fontSize: '14px',
     },
   },
   iconPlay: {
-    color: "#000",
-    fontSize:"36px",
+    color: '#000',
+    fontSize: '36px',
     '@media (max-width: 576px)': {
-      fontSize: "24px",
-      },
+      fontSize: '24px',
+    },
   },
 }));
 
@@ -85,14 +84,10 @@ export default function ModalBox() {
   };
 
   return (
-    <div
-    className={classes.modalBox}
-    >
+    <div className={classes.modalBox}>
       <div className={classes.playBox} onClick={handleOpen}>
         <PlayCircleOutlineIcon className={classes.iconPlay} />
-      <h3 className={classes.howToUse}>
-        How to use
-      </h3>
+        <h3 className={classes.howToUse}>How to use</h3>
       </div>
       <Modal
         className={classes.modalBox}
@@ -102,7 +97,15 @@ export default function ModalBox() {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-        <iframe className={classes.iframe} src="https://player.vimeo.com/video/386119363" width="640" height="339" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          <iframe
+            className={classes.iframe}
+            src="https://player.vimeo.com/video/386119363"
+            width="640"
+            height="339"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />
         </div>
       </Modal>
     </div>

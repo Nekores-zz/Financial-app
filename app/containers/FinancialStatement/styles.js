@@ -8,12 +8,12 @@ const useStyles = makeStyles(theme => ({
   },
 
   main_container: {
-    position:"relative",
-    top: "15px",
+    position: 'relative',
+    top: '15px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    
+
     height: '100vh',
     '@media (max-width: 576px)': {
       alignItems: 'flex-start',

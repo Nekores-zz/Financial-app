@@ -12,13 +12,13 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import { useInjectReducer } from 'utils/injectReducer';
-import useStyles from './styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { Container, Draggable } from 'react-smooth-dnd';
+import useStyles from './styles';
 import Widget from '../../components/Widget';
 import Input from '../../components/Input';
 import Label from '../../components/Label';
-import { Container, Draggable } from 'react-smooth-dnd';
 import { applyDrag, generateItems } from './utils';
 import LeftLabelDrawer from '../../components/LeftLabelDrawer';
 import RightLabelDrawer from '../../components/RightLabelDrawer';
@@ -39,28 +39,28 @@ export function FinancialStatement() {
   const [state, setState] = useState({
     items1: items1Arr,
     items2: generateItems(0, i => ({
-      id: '20' + i,
+      id: `20${i}`,
     })),
     items5: generateItems(0, i => ({
-      id: '50' + i,
+      id: `50${i}`,
     })),
     items6: generateItems(0, i => ({
-      id: '60' + i,
+      id: `60${i}`,
     })),
     items7: generateItems(0, i => ({
-      id: '70' + i,
+      id: `70${i}`,
     })),
     items8: generateItems(0, i => ({
-      id: '80' + i,
+      id: `80${i}`,
     })),
     items9: generateItems(0, i => ({
-      id: '90' + i,
+      id: `90${i}`,
     })),
     items10: generateItems(0, i => ({
-      id: '100' + i,
+      id: `100${i}`,
     })),
     items11: generateItems(0, i => ({
-      id: '110' + i,
+      id: `110${i}`,
     })),
   });
   const [rightStateLabels, setRightStateLabels] = useState({
@@ -130,19 +130,19 @@ export function FinancialStatement() {
   };
 
   const handleChange = (event, item) => {
-    let val = event.target.value;
-    let arr = val.split('+');
+    const val = event.target.value;
+    const arr = val.split('+');
     let a = 0;
-    arr.forEach(i => (a = a + parseInt(i ? i : 0)));
+    arr.forEach(i => (a += parseInt(i || 0)));
     setStateOne({
       ...stateOne,
       [item]: a,
     });
   };
   const handleChangeInputTwo = (event, item) => {
-    let arrTwo = event.target.value.split('+');
+    const arrTwo = event.target.value.split('+');
     let b = 0;
-    arrTwo.forEach(i => (b = b + parseInt(i ? i : 0)));
+    arrTwo.forEach(i => (b += parseInt(i || 0)));
     setStateTwo({
       ...stateTwo,
       [item]: b,
@@ -159,7 +159,7 @@ export function FinancialStatement() {
     'input8',
   ];
 
-  let x = window.matchMedia('(max-width: 1366px)');
+  const x = window.matchMedia('(max-width: 1366px)');
 
   return (
     <Widget>
@@ -210,16 +210,11 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {state.items2.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {state.items2.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       className="dnd_container"
@@ -232,16 +227,11 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {state.items5.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {state.items5.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       className="dnd_container"
@@ -254,16 +244,11 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {state.items6.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {state.items6.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       className="dnd_container"
@@ -276,16 +261,11 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {state.items7.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {state.items7.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       className="dnd_container"
@@ -298,16 +278,11 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {state.items8.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {state.items8.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       className="dnd_container"
@@ -320,16 +295,11 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {state.items9.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {state.items9.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       className="dnd_container"
@@ -342,16 +312,11 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {state.items10.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {state.items10.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       className="dnd_container"
@@ -364,16 +329,11 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {state.items11.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {state.items11.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label bgColor={p.bgColor} LabelText={p.LabelText} />
+                        </Draggable>
+                      ))}
                     </Container>
                   </Widget>
                   <Widget className={classes.cell_box_right}>
@@ -405,17 +365,15 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {rightStateLabels.items4.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              color={p.color}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {rightStateLabels.items4.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label
+                            bgColor={p.bgColor}
+                            color={p.color}
+                            LabelText={p.LabelText}
+                          />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       groupName="2"
@@ -427,17 +385,15 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {rightStateLabels.items12.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              color={p.color}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {rightStateLabels.items12.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label
+                            bgColor={p.bgColor}
+                            color={p.color}
+                            LabelText={p.LabelText}
+                          />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       groupName="2"
@@ -449,17 +405,15 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {rightStateLabels.items13.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              color={p.color}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {rightStateLabels.items13.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label
+                            bgColor={p.bgColor}
+                            color={p.color}
+                            LabelText={p.LabelText}
+                          />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       groupName="2"
@@ -471,17 +425,15 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {rightStateLabels.items14.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              color={p.color}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {rightStateLabels.items14.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label
+                            bgColor={p.bgColor}
+                            color={p.color}
+                            LabelText={p.LabelText}
+                          />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       groupName="2"
@@ -493,17 +445,15 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {rightStateLabels.items15.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              color={p.color}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {rightStateLabels.items15.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label
+                            bgColor={p.bgColor}
+                            color={p.color}
+                            LabelText={p.LabelText}
+                          />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       groupName="2"
@@ -515,17 +465,15 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {rightStateLabels.items16.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              color={p.color}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {rightStateLabels.items16.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label
+                            bgColor={p.bgColor}
+                            color={p.color}
+                            LabelText={p.LabelText}
+                          />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       groupName="2"
@@ -537,17 +485,15 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {rightStateLabels.items17.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              color={p.color}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {rightStateLabels.items17.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label
+                            bgColor={p.bgColor}
+                            color={p.color}
+                            LabelText={p.LabelText}
+                          />
+                        </Draggable>
+                      ))}
                     </Container>
                     <Container
                       groupName="2"
@@ -559,17 +505,15 @@ export function FinancialStatement() {
                         }));
                       }}
                     >
-                      {rightStateLabels.items18.map(p => {
-                        return (
-                          <Draggable className={classes.draggable} key={p.id}>
-                            <Label
-                              bgColor={p.bgColor}
-                              color={p.color}
-                              LabelText={p.LabelText}
-                            />
-                          </Draggable>
-                        );
-                      })}
+                      {rightStateLabels.items18.map(p => (
+                        <Draggable className={classes.draggable} key={p.id}>
+                          <Label
+                            bgColor={p.bgColor}
+                            color={p.color}
+                            LabelText={p.LabelText}
+                          />
+                        </Draggable>
+                      ))}
                     </Container>
                   </Widget>
                   <Widget

@@ -12,7 +12,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import LabelButton from '../../components/LabelButton';
+import LabelButton from '../LabelButton';
 
 const drawerWidth = 208;
 
@@ -67,10 +67,10 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     left: -5,
     top: 14,
-    borderRadius: "7px",
-    color: "#fff",
+    borderRadius: '7px',
+    color: '#fff',
     backgroundColor: '#000',
-    "&:hover":{
+    '&:hover': {
       backgroundColor: '#000 !important',
     },
     '@media (max-width: 576px)': {
