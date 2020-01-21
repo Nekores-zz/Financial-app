@@ -59,8 +59,12 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     right: -5,
     top: 14,
-    borderRadius: 0,
-    backgroundColor: '#7fcd91',
+    borderRadius: "7px",
+    color: "#fff",
+    backgroundColor: '#000',
+    "&:hover": {
+      backgroundColor: '#000 !important',
+    },
     '@media (max-width: 576px)': {
       right: 12,
       boxShadow: 'none',

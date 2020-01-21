@@ -24,6 +24,7 @@ import LeftLabelDrawer from '../../components/LeftLabelDrawer';
 import RightLabelDrawer from '../../components/RightLabelDrawer';
 import H3 from '../../components/H3';
 import H4 from '../../components/H4';
+import ModalBox from '../../components/ModalBox';
 import makeSelectFinancialStatement from './selectors';
 import reducer from './reducer';
 import { items1Arr, items3Arr } from './cellArray';
@@ -167,6 +168,7 @@ export function FinancialStatement() {
         <meta name="description" content="Description of FinancialStatement" />
       </Helmet>
       <Widget className={classes.root}>
+        <ModalBox />
         <Grid container className={classes.main_container} spacing={3}>
           {x.matches ? (
             <LeftLabelDrawer

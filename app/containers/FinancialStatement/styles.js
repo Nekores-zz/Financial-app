@@ -8,9 +8,12 @@ const useStyles = makeStyles(theme => ({
   },
 
   main_container: {
+    position:"relative",
+    top: "15px",
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    
     height: '100vh',
     '@media (max-width: 576px)': {
       alignItems: 'flex-start',
@@ -19,6 +22,9 @@ const useStyles = makeStyles(theme => ({
     '@media (max-width: 1024px)': {
       height: '100%',
     },
+    // '@media (max-width: 1366px)': {
+    //   alignItems: 'flex-start !important',
+    // },
   },
 
   container_box: {
@@ -60,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     background: '#fff',
     textAlign: 'center',
     '@media (max-width: 1024px)': {
-      marginTop: '5rem',
+      // marginTop: '5rem',
     },
     '@media (max-width: 992px)': {
       margin: '2rem auto',
@@ -69,12 +75,11 @@ const useStyles = makeStyles(theme => ({
     '@media (max-width: 768px)': {
       width: '750px',
       margin: '0 auto',
-      marginTop: '4.5rem',
     },
     '@media (max-width: 576px)': {
       width: '360px',
       height: '330px',
-      margin: '1.4rem auto',
+      margin: '0 auto',
     },
     // '@media (max-width: 411px)': {
     //   margin: '3.4rem auto',
