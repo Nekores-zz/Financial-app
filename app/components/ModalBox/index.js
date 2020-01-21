@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import transitions from '@material-ui/core/styles/transitions';
+import CloseIcon from '@material-ui/icons/Close';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -32,15 +33,17 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     position: 'absolute',
-    width: '44%',
-    height: '57%',
+    width: '60%',
+    height: '82%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: '#fff',
     padding: theme.spacing(2, 4, 3),
+    flexDirection: 'column',
     '@media (max-width: 1024px)': {
-      height: '22px',
+      width: '90%',
+      height: '230px',
     },
     '&:focus': {
       outline: 'none !important',
@@ -66,6 +69,18 @@ const useStyles = makeStyles(theme => ({
     '@media (max-width: 576px)': {
       fontSize: '24px',
     },
+  },
+  iframe: {
+    width: '100%',
+    height: '100%',
+  },
+  close: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    textAlign: 'left',
+    fontSize: '36px',
+    cursor: 'pointer',
   },
 }));
 
@@ -97,11 +112,10 @@ export default function ModalBox() {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
+          <CloseIcon className={classes.close} onClick={handleClose} />
           <iframe
             className={classes.iframe}
             src="https://player.vimeo.com/video/386119363"
-            width="640"
-            height="339"
             frameBorder="0"
             allow="autoplay; fullscreen"
             allowFullScreen
