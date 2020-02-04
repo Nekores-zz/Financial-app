@@ -162,9 +162,10 @@ export function FinancialStatement() {
 
   const handleComma = (event, id) => {
     const input = document.getElementById(id);
-    const newValue = addComma(input.value);
+    console.log(input.value.length, input.value, 'asdf');
+
+    const newValue = input.value === '' ? '' : addComma(input.value);
     input.value = newValue;
-    // console.log(input, 'asdf');
     if (event.keyCode == 46 || event.keyCode == 8) {
     } else {
       if (event.keyCode < 48 || event.keyCode > 57) {
