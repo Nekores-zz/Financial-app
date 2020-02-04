@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -101,6 +101,12 @@ export function FinancialStatement() {
   const [open, setOpen] = React.useState(false);
   const [openTwo, setOpenTwo] = React.useState(false);
 
+  // useEffect(() => {
+  //   let form2Data = JSON.parse(localStorage.getItem('FormData'));
+
+  //   setStateTwo(form2Data);
+  // }, []);
+
   const handleLeftOnDrop = e => {
     setState(s => ({
       ...s,
@@ -132,21 +138,56 @@ export function FinancialStatement() {
   const handleChange = (event, item) => {
     const val = event.target.value;
     const arr = val.split('+');
+
     let a = 0;
-    arr.forEach(i => (a += parseInt(i || 0)));
+    arr.forEach(i => (a += parseInt(i.split(',').join('') || 0)));
     setStateOne({
       ...stateOne,
       [item]: a,
     });
   };
+
+  function addComma(inputValue) {
+    if (typeof inputValue === 'number') {
+      return inputValue
+        .toString()
+        .replace(/\D/g, '')
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    } else {
+      return inputValue
+        .replace(/\D/g, '')
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+  }
+
+  const handleComma = (event, id) => {
+    const input = document.getElementById(id);
+    const newValue = addComma(input.value);
+    input.value = newValue;
+    // console.log(input, 'asdf');
+    if (event.keyCode == 46 || event.keyCode == 8) {
+    } else {
+      if (event.keyCode < 48 || event.keyCode > 57) {
+        event.preventDefault();
+      }
+    }
+  };
+
   const handleChangeInputTwo = (event, item) => {
     const arrTwo = event.target.value.split('+');
     let b = 0;
-    arrTwo.forEach(i => (b += parseInt(i || 0)));
+    arrTwo.forEach(i => (b += parseInt(i.split(',').join('') || 0)));
     setStateTwo({
       ...stateTwo,
       [item]: b,
     });
+
+    // console.log(addComma(event.target.value), 'value');
+
+    // let newState = { ...stateTwo };
+    // newState[item] = `${addComma(event.target.value)}`;
+
+    // localStorage.setItem('FormData', JSON.stringify(newState));
   };
   const inputsArray = [
     'input1',
@@ -160,6 +201,8 @@ export function FinancialStatement() {
   ];
 
   const x = window.matchMedia('(max-width: 1366px)');
+
+  // console.log(stateTwo, 'form data');
 
   return (
     <Widget>
@@ -337,13 +380,17 @@ export function FinancialStatement() {
                     </Container>
                   </Widget>
                   <Widget className={classes.cell_box_right}>
-                    {inputsArray.map(item => (
+                    {inputsArray.map((item, index) => (
                       <Widget className={classes.cell}>
                         <Input
                           type="text"
+                          id={`input_${index}`}
                           className={classes.input_style}
                           placeholder="$"
                           name={item}
+                          onKeyUp={event =>
+                            handleComma(event, `input_${index}`)
+                          }
                           onChange={e => handleChange(e, item)}
                         />
                       </Widget>
@@ -520,13 +567,22 @@ export function FinancialStatement() {
                     className={classes.cell_box_right}
                     style={{ borderRight: 0 }}
                   >
-                    {inputsArray.map(item => (
+                    {inputsArray.map((item, index) => (
                       <Widget className={classes.cell}>
                         <Input
                           type="text"
+                          // value={
+                          //   stateTwo[item]
+                          //     ? addComma(stateTwo[item])
+                          //     : stateTwo[item]
+                          // }
+                          id={`input2_${index}`}
                           className={classes.input_style}
                           placeholder="$"
                           name={item}
+                          onKeyUp={event =>
+                            handleComma(event, `input2_${index}`)
+                          }
                           onChange={e => handleChangeInputTwo(e, item)}
                         />
                       </Widget>
@@ -539,8 +595,10 @@ export function FinancialStatement() {
                   <H4 className={classes.label} text="Total Assets" />
                   <Input
                     placeholder="$"
+                    type="text"
+                    id="total_assets"
                     className={classes.input_style_calcu}
-                    value={
+                    value={(
                       getNumber(stateOne.input1) +
                       getNumber(stateOne.input2) +
                       getNumber(stateOne.input3) +
@@ -549,7 +607,7 @@ export function FinancialStatement() {
                       getNumber(stateOne.input6) +
                       getNumber(stateOne.input7) +
                       getNumber(stateOne.input8)
-                    }
+                    ).toLocaleString()}
                   />
                 </Widget>
                 <Widget
@@ -562,8 +620,10 @@ export function FinancialStatement() {
                   />
                   <Input
                     placeholder="$"
+                    type="text"
+                    id="tatal_liabilities"
                     className={classes.input_style_calcu}
-                    value={
+                    value={(
                       getNumber(stateTwo.input1) +
                       getNumber(stateTwo.input2) +
                       getNumber(stateTwo.input3) +
@@ -572,7 +632,7 @@ export function FinancialStatement() {
                       getNumber(stateTwo.input6) +
                       getNumber(stateTwo.input7) +
                       getNumber(stateTwo.input8)
-                    }
+                    ).toLocaleString()}
                   />
                 </Widget>
               </Widget>
