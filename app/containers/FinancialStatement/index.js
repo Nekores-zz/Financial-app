@@ -161,17 +161,18 @@ export function FinancialStatement() {
   }
 
   const handleComma = (event, id) => {
-    const input = document.getElementById(id);
-    console.log(input.value.length, input.value, 'asdf');
-
-    const newValue = input.value === '' ? '' : addComma(input.value);
-    input.value = newValue;
-    if (event.keyCode == 46 || event.keyCode == 8) {
+    if (event.which == 48 || event.which == 8) {
+      //do nothing
     } else {
-      if (event.keyCode < 48 || event.keyCode > 57) {
+      if (event.which < 48 || event.which > 57) {
         event.preventDefault();
       }
     }
+    setTimeout(function() {
+      const input = document.getElementById(id);
+      const newValue = input.value === '' ? '' : addComma(input.value);
+      input.value = newValue;
+    }, 0.5);
   };
 
   const handleChangeInputTwo = (event, item) => {
@@ -389,7 +390,7 @@ export function FinancialStatement() {
                           className={classes.input_style}
                           placeholder="$"
                           name={item}
-                          onKeyUp={event =>
+                          onKeyPress={event =>
                             handleComma(event, `input_${index}`)
                           }
                           onChange={e => handleChange(e, item)}
@@ -581,7 +582,7 @@ export function FinancialStatement() {
                           className={classes.input_style}
                           placeholder="$"
                           name={item}
-                          onKeyUp={event =>
+                          onKeyPress={event =>
                             handleComma(event, `input2_${index}`)
                           }
                           onChange={e => handleChangeInputTwo(e, item)}
