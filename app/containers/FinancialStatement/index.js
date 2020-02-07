@@ -204,13 +204,12 @@ export function FinancialStatement() {
 
   const x = window.matchMedia('(max-width: 1366px)');
 
-  // console.log(stateTwo, 'form data');
 
   return (
     <Widget>
       <Helmet>
-        <title>FinancialStatement</title>
-        <meta name="description" content="Description of FinancialStatement" />
+        <title>Balance Sheet</title>
+        <meta name="description" content="Description of Balance Sheet" />
       </Helmet>
       <Widget className={classes.root}>
         <ModalBox />
