@@ -135,12 +135,35 @@ export function FinancialStatement() {
     setOpenTwo(false);
   };
 
-  const handleChange = (event, item) => {
-    const val = event.target.value;
-    const arr = val.split('+');
+  String.prototype.commafy = function() {
+    return this.replace(/(^|[^\w.])(\d{4,})/g, function($0, $1, $2) {
+      return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, '$&,');
+    });
+  };
 
-    let a = 0;
-    arr.forEach(i => (a += parseInt(i.split(',').join('') || 0)));
+  Number.prototype.commafy = function() {
+    return String(this).commafy();
+  };
+
+  const handleChange = (event, item) => {
+    let val = parseInt(event.target.value);
+    const plusArr = event.target.value.split('+');
+    const minusArr = event.target.value.split('-');
+    let a = plusArr.length <= 1 && minusArr.length <= 1 ? val : 0;
+
+    plusArr.length > 1 &&
+      plusArr.forEach((i, index) => {
+        a = a + parseInt(i.split(',').join('') || 0);
+      });
+
+    minusArr.length > 1 &&
+      minusArr.forEach((i, index) => {
+        if (index === 0) {
+          a = a + parseInt(i.split(',').join('') || 0);
+        } else {
+          a = a - parseInt(i.split(',').join('') || 0);
+        }
+      });
     setStateOne({
       ...stateOne,
       [item]: a,
@@ -161,7 +184,12 @@ export function FinancialStatement() {
   }
 
   const handleComma = (event, id) => {
-    if (event.which == 48 || event.which == 8) {
+    if (
+      event.which == 48 ||
+      event.which == 8 ||
+      event.which == 43 ||
+      event.which == 45
+    ) {
       //do nothing
     } else {
       if (event.which < 48 || event.which > 57) {
@@ -170,15 +198,31 @@ export function FinancialStatement() {
     }
     setTimeout(function() {
       const input = document.getElementById(id);
-      const newValue = input.value === '' ? '' : addComma(input.value);
-      input.value = newValue;
+      let value = input.value.split(',').join('');
+      const newVal = value.commafy();
+      input.value = newVal;
     }, 0.5);
   };
 
   const handleChangeInputTwo = (event, item) => {
-    const arrTwo = event.target.value.split('+');
-    let b = 0;
-    arrTwo.forEach(i => (b += parseInt(i.split(',').join('') || 0)));
+    let val = parseInt(event.target.value);
+    const plusArr = event.target.value.split('+');
+    const minusArr = event.target.value.split('-');
+    let b = plusArr.length <= 1 && minusArr.length <= 1 ? val : 0;
+
+    plusArr.length > 1 &&
+      plusArr.forEach((i, index) => {
+        b = b + parseInt(i.split(',').join('') || 0);
+      });
+
+    minusArr.length > 1 &&
+      minusArr.forEach((i, index) => {
+        if (index === 0) {
+          b = b + parseInt(i.split(',').join('') || 0);
+        } else {
+          b = b - parseInt(i.split(',').join('') || 0);
+        }
+      });
     setStateTwo({
       ...stateTwo,
       [item]: b,
@@ -203,7 +247,6 @@ export function FinancialStatement() {
   ];
 
   const x = window.matchMedia('(max-width: 1366px)');
-
 
   return (
     <Widget>
@@ -599,15 +642,15 @@ export function FinancialStatement() {
                     type="text"
                     id="total_assets"
                     className={classes.input_style_calcu}
-                    value={(
+                    value={parseInt(
                       getNumber(stateOne.input1) +
-                      getNumber(stateOne.input2) +
-                      getNumber(stateOne.input3) +
-                      getNumber(stateOne.input4) +
-                      getNumber(stateOne.input5) +
-                      getNumber(stateOne.input6) +
-                      getNumber(stateOne.input7) +
-                      getNumber(stateOne.input8)
+                        getNumber(stateOne.input2) +
+                        getNumber(stateOne.input3) +
+                        getNumber(stateOne.input4) +
+                        getNumber(stateOne.input5) +
+                        getNumber(stateOne.input6) +
+                        getNumber(stateOne.input7) +
+                        getNumber(stateOne.input8),
                     ).toLocaleString()}
                   />
                 </Widget>
