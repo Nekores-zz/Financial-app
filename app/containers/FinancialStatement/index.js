@@ -146,42 +146,13 @@ export function FinancialStatement() {
   };
 
   const handleChange = (event, item) => {
-    let val = parseInt(event.target.value);
-    const plusArr = event.target.value.split('+');
-    const minusArr = event.target.value.split('-');
-    let a = plusArr.length <= 1 && minusArr.length <= 1 ? val : 0;
-
-    plusArr.length > 1 &&
-      plusArr.forEach((i, index) => {
-        a = a + parseInt(i.split(',').join('') || 0);
-      });
-
-    minusArr.length > 1 &&
-      minusArr.forEach((i, index) => {
-        if (index === 0) {
-          a = a + parseInt(i.split(',').join('') || 0);
-        } else {
-          a = a - parseInt(i.split(',').join('') || 0);
-        }
-      });
+    const val = event.target.value;
+    let a = eval(val.split(',').join(''));
     setStateOne({
       ...stateOne,
       [item]: a,
     });
   };
-
-  function addComma(inputValue) {
-    if (typeof inputValue === 'number') {
-      return inputValue
-        .toString()
-        .replace(/\D/g, '')
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    } else {
-      return inputValue
-        .replace(/\D/g, '')
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    }
-  }
 
   const handleComma = (event, id) => {
     if (
@@ -205,24 +176,8 @@ export function FinancialStatement() {
   };
 
   const handleChangeInputTwo = (event, item) => {
-    let val = parseInt(event.target.value);
-    const plusArr = event.target.value.split('+');
-    const minusArr = event.target.value.split('-');
-    let b = plusArr.length <= 1 && minusArr.length <= 1 ? val : 0;
-
-    plusArr.length > 1 &&
-      plusArr.forEach((i, index) => {
-        b = b + parseInt(i.split(',').join('') || 0);
-      });
-
-    minusArr.length > 1 &&
-      minusArr.forEach((i, index) => {
-        if (index === 0) {
-          b = b + parseInt(i.split(',').join('') || 0);
-        } else {
-          b = b - parseInt(i.split(',').join('') || 0);
-        }
-      });
+    const val = event.target.value;
+    let b = eval(val.split(',').join(''));
     setStateTwo({
       ...stateTwo,
       [item]: b,
@@ -639,19 +594,19 @@ export function FinancialStatement() {
                   <H4 className={classes.label} text="Total Assets" />
                   <Input
                     placeholder="$"
-                    type="text"
                     id="total_assets"
+                    type="text"
                     className={classes.input_style_calcu}
-                    value={parseInt(
+                    value={(
                       getNumber(stateOne.input1) +
-                        getNumber(stateOne.input2) +
-                        getNumber(stateOne.input3) +
-                        getNumber(stateOne.input4) +
-                        getNumber(stateOne.input5) +
-                        getNumber(stateOne.input6) +
-                        getNumber(stateOne.input7) +
-                        getNumber(stateOne.input8),
-                    ).toLocaleString()}
+                      getNumber(stateOne.input2) +
+                      getNumber(stateOne.input3) +
+                      getNumber(stateOne.input4) +
+                      getNumber(stateOne.input5) +
+                      getNumber(stateOne.input6) +
+                      getNumber(stateOne.input7) +
+                      getNumber(stateOne.input8)
+                    ).commafy()}
                   />
                 </Widget>
                 <Widget
@@ -676,7 +631,7 @@ export function FinancialStatement() {
                       getNumber(stateTwo.input6) +
                       getNumber(stateTwo.input7) +
                       getNumber(stateTwo.input8)
-                    ).toLocaleString()}
+                    ).commafy()}
                   />
                 </Widget>
               </Widget>
