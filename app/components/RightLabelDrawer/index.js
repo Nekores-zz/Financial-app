@@ -97,9 +97,10 @@ const useStyles = makeStyles(theme => ({
   drawerclose: {
     position: 'absolute',
     right: 0,
+    zIndex: 99999,
     '@media (max-width: 576px)': {
       marginTop: '-6px',
-      right: -12,
+      // right: -12,
     },
   },
   content: {
