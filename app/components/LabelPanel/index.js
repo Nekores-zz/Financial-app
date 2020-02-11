@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
     background: '#fff',
     margin: '0 2rem',
     borderRadius: 0,
-    // overflowY: 'inherit',
+    overflowY: 'visible !important',
+    overflowX: 'visible !important',
     '@media (max-width: 1449px)': {
       margin: '0 auto',
     },

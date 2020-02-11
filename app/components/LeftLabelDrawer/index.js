@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
     },
     '@media (max-width: 576px)': {
       width: '84px',
+      overflow:"visible !important"
     },
   },
   left_drawer_btn: {
@@ -96,7 +97,7 @@ const useStyles = makeStyles(theme => ({
   drawerclose: {
     position: 'absolute',
     right: 0,
-    zIndex: 99999,
+    zIndex: 1,
     '@media (max-width: 576px)': {
       marginTop: '-6px',
       // right: -12,
