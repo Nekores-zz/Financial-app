@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     },
     '@media (max-width: 576px)': {
       width: '84px',
-      overflow:"visible !important"
+      overflow: 'visible !important',
     },
   },
   left_drawer_btn: {

@@ -85,7 +85,7 @@ const useStyles = makeStyles(theme => ({
     },
     '@media (max-width: 576px)': {
       width: '85px',
-      overflow:"visible !important"
+      overflow: 'visible !important',
     },
   },
   drawerHeader: {
