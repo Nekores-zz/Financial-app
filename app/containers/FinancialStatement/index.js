@@ -172,10 +172,10 @@ export function FinancialStatement() {
       let value = input.value.split(',').join('');
       const newVal = value.commafy();
       input.value = newVal;
-    }, 0.5);
+    }, .1);
   };
 
-  const handleChangeInputTwo = (event, item) => {
+  const handleChangeInputTwo = (event, item, id) => {
     const val = event.target.value;
     let b = eval(val.split(',').join(''));
     setStateTwo({
@@ -390,7 +390,7 @@ export function FinancialStatement() {
                           onKeyPress={event =>
                             handleComma(event, `input_${index}`)
                           }
-                          onChange={e => handleChange(e, item)}
+                          onChange={e => handleChange(e, item, `input_${index}`)}
                         />
                       </Widget>
                     ))}

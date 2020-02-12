@@ -40,7 +40,7 @@ function Input(props) {
         name={props.name}
         onChange={props.onChange}
         type={props.type}
-        onKeyDown={props.onKeyPress}
+        onKeyPress={props.onKeyPress}
         id={props.id}
       />
     </div>
